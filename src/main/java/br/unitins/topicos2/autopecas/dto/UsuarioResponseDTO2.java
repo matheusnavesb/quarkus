@@ -1,5 +1,5 @@
 package br.unitins.topicos2.autopecas.dto;
-
+/*
 import br.unitins.topicos2.autopecas.model.Usuario;
 
 public record UsuarioResponseDTO2(
@@ -16,4 +16,4 @@ public record UsuarioResponseDTO2(
                 usuario.getIdade(),
                 usuario.getSenha());
     }
-}
+}*/

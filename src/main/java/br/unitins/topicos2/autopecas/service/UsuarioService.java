@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.unitins.topicos2.autopecas.dto.UsuarioDTO;
 import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO;
-import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO2;
+//import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO2;
 import jakarta.validation.Valid;
 
 public interface UsuarioService {
@@ -12,7 +12,9 @@ public interface UsuarioService {
     // recursos basicos
     List<UsuarioResponseDTO> getAll();
 
-    UsuarioResponseDTO2 findById(Long id);
+    UsuarioResponseDTO findById(Long id);
+
+    //UsuarioResponseDTO2 findById(Long id);
 
     UsuarioResponseDTO create(@Valid UsuarioDTO dto);
 

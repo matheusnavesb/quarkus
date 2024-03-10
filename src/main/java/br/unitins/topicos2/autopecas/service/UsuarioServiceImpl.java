@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import br.unitins.topicos2.autopecas.dto.UsuarioDTO;
 import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO;
-import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO2;
+//import br.unitins.topicos2.autopecas.dto.UsuarioResponseDTO2;
 import br.unitins.topicos2.autopecas.model.Usuario;
 import br.unitins.topicos2.autopecas.repository.UsuarioRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -35,11 +35,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioResponseDTO2 findById(Long id) {
+    public UsuarioResponseDTO findById(Long id) {
         Usuario usuario = usuarioRepository.findById(id);
         if (usuario == null)
             throw new NotFoundException("Usuario não encontrado.");
-        return UsuarioResponseDTO2.valueOf(usuario);
+        return UsuarioResponseDTO.valueOf(usuario);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario entity = new Usuario();
         entity.setNome(usuarioDTO.nome());
         entity.setEmail(usuarioDTO.email());
-        entity.setIdade(usuarioDTO.idade());
+        //entity.setIdade(usuarioDTO.idade());
         entity.setSenha(usuarioDTO.senha());
 
         usuarioRepository.persist(entity);
@@ -67,7 +67,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         entity.setNome(usuarioDTO.nome());
         entity.setEmail(usuarioDTO.email());
-        entity.setIdade(usuarioDTO.idade());
+        //entity.setIdade(usuarioDTO.idade());
         entity.setSenha(usuarioDTO.senha());
 
         return UsuarioResponseDTO.valueOf(entity);

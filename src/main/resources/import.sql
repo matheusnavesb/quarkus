@@ -4,8 +4,12 @@ insert into estado (nome, sigla) values( 'São Paulo', 'SP');
 insert into estado (nome, sigla) values( 'Rio de Janeiro', 'RJ');
 insert into estado (nome, sigla) values( 'Pará', 'PA');
 
-insert into usuario (nome, email , idade, senha) values( 'Matheus','Matheus@gmail.com', 29, '123456');
-insert into usuario (nome, email , idade, senha) values( 'Filipe','Filipe@gmail.com', 20, '121212');
+--insert into usuario (nome, email , idade, senha) values( 'Matheus','Matheus@gmail.com', 29, '123456');
+--insert into usuario (nome, email , idade, senha) values( 'Filipe','Filipe@gmail.com', 20, '121212');
+
+insert into usuario (nome, email , senha) values( 'Matheus','Matheus@gmail.com', '12345678');
+insert into usuario (nome, email , senha) values( 'Filipe','Filipe@gmail.com', '12121212');
+
 
 --insert into usuario (nome, email) values( 'Matheus','Matheus@gmail.com');
 --insert into usuario (nome, email) values( 'Filipe','Filipe@gmail.com');

@@ -12,8 +12,8 @@ public class Usuario extends DefaultEntity {
     @Column(nullable = false, length = 60)
     private String email;
 
-    @Column(nullable = false, length = 60)
-    private int idade;
+    //@Column(nullable = false, length = 60)
+    //private int idade;
 
     @Column(nullable = false, length = 60)
     private String senha;
@@ -42,12 +42,13 @@ public class Usuario extends DefaultEntity {
         this.email = email;
     }
 
+    /*
     public int getIdade() {
-        return idade;
+      return idade;
     }
 
     public void setIdade(int idade) {
         this.idade = idade;
-    }
+    }*/
 
 }
