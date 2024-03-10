@@ -6,14 +6,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Cidade extends DefaultEntity{
-    
+public class Cidade extends DefaultEntity {
+
     @Column(nullable = false, length = 60)
     private String nome;
 
     @JoinColumn(name = "id_estado")
     @ManyToOne
     private Estado estado;
+
+    public String getNome() {
+        return nome;
+    }
 
     public String getNome() {
         return nome;
