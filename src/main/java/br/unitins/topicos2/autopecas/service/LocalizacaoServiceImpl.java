@@ -53,6 +53,7 @@ public class LocalizacaoServiceImpl implements LocalizacaoService{
 
         Localizacao entity = new Localizacao();
         entity.setCidade(localizacaoDTO.cidade());
+        entity.setEstado(localizacaoDTO.estado());
         entity.setFornecedor(fornecedorRepository.findById(localizacaoDTO.idFornecedor()));
 
         localizacaoRepository.persist(entity);
