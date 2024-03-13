@@ -20,6 +20,10 @@ insert into cidade (nome, id_estado) values( 'Gurupi', 1);
 insert into cidade (nome, id_estado) values( 'Goiânia', 2);
 insert into cidade (nome, id_estado) values( 'Anápolis', 2);
 
-insert into fornecedor(nome, cnpj, email) values('FORNECEDOR 1', '00.123.123.0001-00', 'fornecedor1@gmail.com');
-insert into fornecedor(nome, cnpj, email) values('FORNECEDOR 2', '11.123.123.0001-00', 'fornecedor2@gmail.com');
-insert into fornecedor(nome, cnpj, email) values('FORNECEDOR 3', '22.123.123.0001-00', 'fornecedor3@gmail.com');
+insert into fornecedor(nome, cnpj, email) values('FIAT', '00.123.123.0001-00', 'fornecedor1@gmail.com');
+insert into fornecedor(nome, cnpj, email) values('TOYOTA', '11.123.123.0001-00', 'fornecedor2@gmail.com');
+insert into fornecedor(nome, cnpj, email) values('HONDA', '22.123.123.0001-00', 'fornecedor3@gmail.com');
+
+insert into localizacao(cidade, estado, id_Fornecedor) values ('Palmas', 'Tocantins', 1);
+insert into localizacao(cidade, estado, id_Fornecedor) values ('Goiania', 'Goias', 1);
+insert into localizacao(cidade, estado, id_Fornecedor) values ('Sao Paulo', 'Sao Paulo', 2);

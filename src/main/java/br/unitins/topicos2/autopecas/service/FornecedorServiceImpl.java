@@ -8,7 +8,6 @@ import br.unitins.topicos2.autopecas.dto.FornecedorDTO;
 import br.unitins.topicos2.autopecas.dto.FornecedorResponseDTO;
 import br.unitins.topicos2.autopecas.model.Fornecedor;
 import br.unitins.topicos2.autopecas.repository.FornecedorRepository;
-import br.unitins.topicos2.autopecas.repository.EstadoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -22,9 +21,6 @@ public class FornecedorServiceImpl implements FornecedorService{
     
     @Inject
     FornecedorRepository fornecedorRepository;
-
-    @Inject
-    EstadoRepository estadoRepository;
 
     @Inject
     Validator validator;

@@ -6,12 +6,16 @@ public record FornecedorResponseDTO(
         Long id,
         String nome,
         String cnpj,
-        String email) {
+        String email
+        ) {
+
     public static FornecedorResponseDTO valueOf(Fornecedor fornecedor) {
         return new FornecedorResponseDTO(
                 fornecedor.getId(),
                 fornecedor.getNome(),
                 fornecedor.getCnpj(),
                 fornecedor.getEmail());
+                // fornecedor.getListaLocalizacao()
+                // .stream().map(t -> LocalizacaoDTO.valueOf(t)).toList());
     }
 }

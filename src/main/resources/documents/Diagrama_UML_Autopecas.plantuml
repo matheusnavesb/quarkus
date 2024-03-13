@@ -3,7 +3,20 @@
 
 class Pedido{
     id: Long
-    data: LocalDateTime 
+    data: LocalDateTime
+    valorTotal: Double
+    pagamento: Pagamento
+    status: StatusPedido
+    cupom: Cupom 
+}
+
+Pedido --> StatusPedido
+Pedido --> Cupom
+
+class Cupom{
+    id: Long
+    nomeCupom: String
+    desconto: Double
 }
 
 class ItemPedido{
@@ -12,14 +25,41 @@ class ItemPedido{
     preco: Double
 }
 
+class Pagamento{
+    id: Long
+    momento: LocalDateTime
+    pagamento: FormaPagamento
+}
 
-class Produto{
+Pagamento "1" --> "1" FormaPagamento
+Pedido --> "1" Pagamento
+
+enum FormaPagamento{
+    + PIX
+    + CREDITO
+    + BOLETO 
+}
+
+enum StatusPedido{
+    + AGUARDANDO_PAGAMENTO
+    + PAGAMENTO_REALIZADO
+    + ENVIADO
+    + ENTREGUE
+    + CANCELADO
+}
+
+class Peça{
     id: Long
     nome: String
     descricao: String
     preco: Double
     estoque: Integer
+    fornecedor: Fornecedor
+    categoria: Categoria
 }
+
+Peça "*" --> "1" Fornecedor
+Peça "*" --> "1" Categoria
 
 enum Categoria{
     + MECANICA
@@ -33,6 +73,17 @@ class Usuario{
     id: Long
     email: String 
     senha: String
+    endereco: Endereco
+}
+
+Usuario "*" --> "1" Endereco
+
+class Endereco{
+    id: Long
+    cidade: String
+    cep: String
+    rua: String
+    numero: String
 }
 
 enum Perfil{
@@ -40,11 +91,27 @@ enum Perfil{
     + ADMIN
 }
 
-Produto "*" --> "1" Categoria
+class Fornecedor{
+    id: Long
+    nome: String
+    cnpj: String
+    email: String
+    localizacao: Localizacao
+}
+
+class Localizacao{
+    id: Long
+    cidade: String 
+    estado: String
+}
+
+Fornecedor "1" o--> "*" Localizacao
+
+
 
 Usuario "*" --> "1" Perfil
 
-ItemPedido  "*" --> "1"  Produto
+ItemPedido  "*" --> "1"  Peça
 Pedido "1" *--> "*" ItemPedido
 Pedido "*" --> "1" Usuario
 

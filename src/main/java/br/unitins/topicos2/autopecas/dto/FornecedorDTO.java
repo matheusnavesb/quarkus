@@ -15,6 +15,7 @@ public record FornecedorDTO(
     @NotBlank(message = "O campo email deve ser informado.")
     @Size(max = 60, message = "O campo email deve possuir no máximo 60 caracteres.")
     String email
+
 ) {
     
 }
