@@ -23,7 +23,7 @@ import jakarta.ws.rs.core.Response.Status;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class EstadoResource {
-    
+
     @Inject
     EstadoService service;
 
@@ -32,7 +32,7 @@ public class EstadoResource {
     @POST
     public Response create(EstadoDTO dto) {
         EstadoResponseDTO retorno = service.create(dto);
-        //return Response.status(Status.CREATED).entity(retorno).build();
+        // return Response.status(Status.CREATED).entity(retorno).build();
         return Response.status(201).entity(retorno).build();
     }
 
@@ -63,10 +63,16 @@ public class EstadoResource {
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
-    
+
     @GET
     @Path("/search/nome/{nome}")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
     }
 }

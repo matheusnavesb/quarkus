@@ -1,0 +1,170 @@
+@startuml Diagrama_UML_Autopecas_Desmembrado_3
+
+class Pedido{
+    id: Long
+    dataPedido: LocalDateTime
+    pagamento: Pagamento
+    status: StatusPedido
+    cupom: Cupom
+    valorTotal: Double 
+}
+
+class Cupom{
+    id: Long
+    nomeCupom: String
+    dataAplicada: LocalDateTime
+    desconto: Double
+}
+
+class ItemPedido{
+    id: Long 
+    quantidade: Integer
+    precoUnitario: Double
+    subtotal: Double
+    kitSuspensao: KitSuspensao
+}
+
+class Pagamento{
+    id: Long
+    momento: LocalDateTime
+    formaPagamento: FormaPagamento
+}
+
+enum FormaPagamento{
+    + PIX
+    + CARTAO_CREDITO
+    + BOLETO_BANCARIO
+}
+
+enum StatusPedido{
+    + AGUARDANDO_PAGAMENTO
+    + PAGAMENTO_APROVADO
+    + SEPARACAO
+    + ENVIADO
+    + ENTREGUE
+    + CANCELADO
+}
+
+class KitSuspensao{
+    id: Long
+    nome: String
+    descricao: String
+    preco: Double
+    estoque: Integer
+}
+
+class PecaSuspensaoEsportiva{
+    tipo_mola: string        
+    tipo_amortecedor: string    
+    rigidez_suspensao: string
+    compatibilidade: Compatibilidade
+    dadosTecnicos: DadosTecnicos
+}
+
+enum TipoMola{
+    + HELICOIDAL
+    + FLEXAO
+    + TORÇÃO
+}
+
+enum TipoArmotecedor{
+    + CONVECIONAL
+    + PRESSURIZADO
+}
+
+PecaSuspensaoEsportiva --> TipoMola
+PecaSuspensaoEsportiva --> TipoArmotecedor
+
+class PecaSuspensaoPadrao{
+    tipo_material: string
+    compatibilidade: Compatibilidade
+    dadosTecnicos: DadosTecnicos
+}
+
+KitSuspensao --> PecaSuspensaoEsportiva
+KitSuspensao --> PecaSuspensaoPadrao
+
+class Compatibilidade{
+    id: Long
+    marca: String
+    modelo: String
+}
+
+class DadosTecnicos{
+    id: Long
+    modelo: String
+    fabricante: Fabricante 
+    garantia: string
+    embalagem: String
+    peso: String
+}
+
+class Usuario{
+    id: Long
+    nome: String
+    email: String 
+    senha: String
+    telefone: Telefone
+    endereco: Endereco
+    perfil: Perfil
+}
+
+enum Perfil{
+    + USER
+    + ADMIN
+}
+
+class Telefone{
+    id: Long
+    numero: String
+}
+
+class Endereco{
+    id: Long
+    cep: String
+    rua: String
+    numero: String
+    bairro: String
+    cidade: String
+    estado: String
+}
+
+class Fabricante{
+    id: Long
+    nome: String
+    cnpj: String
+    contato: Contato
+}
+
+class Contato{
+    id: Long
+    email: String
+    telefone: String
+    siteOficial: String
+}
+
+Usuario "1" --> "1" Perfil
+Usuario "1" --> "*" Endereco
+Usuario "1" --> "*" Telefone
+
+Fabricante "1" o--> "*" Contato
+
+ItemPedido  "*" --> "1"  KitSuspensao
+
+PecaSuspensaoEsportiva "*" *--> "1" DadosTecnicos
+PecaSuspensaoPadrao "*" *--> "1" DadosTecnicos
+PecaSuspensaoEsportiva "*" *--> "1" Compatibilidade
+PecaSuspensaoPadrao "*" *--> "1" Compatibilidade
+
+DadosTecnicos "*" o--> "1" Fabricante 
+
+Pedido "1" *--> "*" ItemPedido
+Pedido "*" --> "1" Usuario
+
+Pedido --> StatusPedido
+Pedido --> Cupom
+
+Pagamento "1" --> "1" FormaPagamento
+Pedido --> "1" Pagamento
+
+@enduml
